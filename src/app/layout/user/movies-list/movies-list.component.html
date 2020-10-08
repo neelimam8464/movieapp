@@ -1,0 +1,15 @@
+<div class="row">
+    <mat-form-field>
+        <mat-label>Search by title</mat-label>
+        <input matInput [formControl]="movieParam" placeholder="Search Movies" />
+    </mat-form-field>
+    <bar-rating [(ngModel)]="rating" [max]="5" (rateChange)="filterMovies()" [titles]="rating"></bar-rating>
+    <button mat-icon-button (click)="resetFilter()"><mat-icon>refresh</mat-icon></button>
+</div>
+<div class="row">
+    <div class="col-md-3 mg-btm-10 pointer" *ngFor="let item of filteredMovies">
+        <div fxFlex>
+            <app-stat [data]="item"></app-stat>
+        </div>
+    </div>
+</div>

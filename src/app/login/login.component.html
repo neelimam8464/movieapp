@@ -1,0 +1,33 @@
+<div class="login-page">
+    <div class="content">
+        <form class="login-form" fxFlex [formGroup]="loginForm">
+            <div class="text-center">
+                <h2 class="app-name">Movie App</h2>
+            </div>
+            <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="UserName" formControlName="userName" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput type="password" placeholder="Password" formControlName="password" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <button mat-raised-button color="primary" class="w-100" (click)="onLogin()">
+                        Login
+                    </button>
+                </div>
+            </div>
+            <div style="color: red; text-align: center" class="text" [hidden]="!InvalidCredential">
+                Invalid Username or Password
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<button mat-icon-button color="primary" routerLink="/user/">
+    <mat-icon>west</mat-icon>Go back
+</button>
+<h2>{{ movieDetails.title }}</h2>
+<div class="row">
+    <div class="col-md-3"><label>Description</label></div>
+    <div class="col-md-9">{{ movieDetails.description }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3"><label>Average Rating</label></div>
+    <div class="col-md-9">
+        <bar-rating [(rate)]="avarageRating" [max]="5" [readOnly]="true"></bar-rating>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3"><label>Your Rating</label></div>
+    <div class="col-md-9">
+        <bar-rating [formControl]="ratingControl" [max]="5"></bar-rating>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form #form="ngForm" [formGroup]="commentForm" (ngSubmit)="addComment()">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Leave a comment</mat-label>
+                        <textarea formControlName="comment" matInput placeholder="Ex. It makes me feel..."></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 padding-30">
+                    <button mat-raised-button color="primary">Post</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3"><strong>Comments</strong></div>
+    <div class="col-md-9">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" *ngFor="let item of movieDetails.commants">
+        <div class="padding-5">
+            <mat-card>
+                <mat-card-content>{{ item.comment }}</mat-card-content>
+                <mat-card-subtitle>{{item.username}}</mat-card-subtitle>
+            </mat-card>
+
+        </div>
+    </div>
+</div>
